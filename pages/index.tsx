@@ -16,7 +16,6 @@ const Home: FC = ({
 	products,
 	bannerData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	console.log(bannerData);
 	console.log(products);
 	return (
 		<>
@@ -26,8 +25,12 @@ const Home: FC = ({
 				<h2>Best Selling Produts</h2>
 				<p>Speakers of many variants</p>
 			</div>
-			<div>{products?.map((product: any) => product.id)}</div>
-			<Footer />
+			<div className="products-container">
+				{products?.map((product: any) => (
+					<Product key={product.id} product={product} />
+				))}
+			</div>
+			<Footer footerBanner={bannerData && bannerData[0]} />
 		</>
 	);
 };
