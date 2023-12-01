@@ -33,12 +33,16 @@ const Home: FC = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+	// Get dataa
+	// Products
 	const query = '*[_type == "product"]';
 	const products = await client.fetch(query);
+	// Branch
 
 	const bannerQuery = '*[_type == "banner"]';
 	const bannerData = await client.fetch(bannerQuery);
 
+	//Create data object
 	return {
 		props: {
 			products,

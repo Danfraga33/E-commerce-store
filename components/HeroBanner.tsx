@@ -11,6 +11,7 @@ interface HeroBannerProps {
 		buttonText?: string;
 		desc?: string;
 		smallTe?: string;
+		product: string;
 	};
 }
 const HeroBanner: FC<HeroBannerProps> = ({ HeroBanner }) => {
@@ -29,12 +30,12 @@ const HeroBanner: FC<HeroBannerProps> = ({ HeroBanner }) => {
 			/>
 
 			<div>
-				<Link href="/product/ID">
+				<Link href={`/product/${HeroBanner.product}`}>
 					<button type="button"> {HeroBanner?.buttonText}</button>
 				</Link>
 				<div className="desc">
 					<h5>{HeroBanner?.desc}</h5>
-					<p>{HeroBanner?.smallTe}</p>
+					<p>{HeroBanner?.desc}</p>
 				</div>
 			</div>
 		</div>
