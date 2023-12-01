@@ -7,7 +7,7 @@ interface HeroBannerProps {
 		smallText?: string;
 		midText?: string;
 		largeText?: string;
-		image?: any; // Adjust the type based on your data structure
+		image?: any; // Change
 		buttonText?: string;
 		desc?: string;
 		smallTe?: string;
