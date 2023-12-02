@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { client } from '../lib/client';
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 
@@ -9,10 +9,12 @@ import {
 	Footer,
 	FooterBanner,
 	Navbar,
+	Layout,
 } from '../components/index';
 import banner from '@/ecommerce/schemas/banner';
+import type { NextPageWithLayout } from './_app';
 
-const Home: FC = ({
+const Home: NextPageWithLayout = ({
 	products,
 	bannerData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -30,9 +32,13 @@ const Home: FC = ({
 					<Product key={product.id} product={product} />
 				))}
 			</div>
-			<Footer footerBanner={bannerData && bannerData[0]} />
+			<FooterBanner footerBanner={bannerData && bannerData[0]} />
 		</>
 	);
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+	return <Layout>{page}</Layout>;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
