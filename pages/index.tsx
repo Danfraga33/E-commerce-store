@@ -1,24 +1,14 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { client } from '../lib/client';
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 
-import {
-	HeroBanner,
-	Product,
-	Cart,
-	Footer,
-	FooterBanner,
-	Navbar,
-	Layout,
-} from '../components/index';
-import banner from '@/ecommerce/schemas/banner';
+import { HeroBanner, Product, FooterBanner, Layout } from '../components/index';
 import type { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = ({
 	products,
 	bannerData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	console.log(products);
 	return (
 		<>
 			<HeroBanner HeroBanner={bannerData.length && bannerData[0]} />
