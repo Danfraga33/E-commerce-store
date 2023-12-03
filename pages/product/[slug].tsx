@@ -33,10 +33,9 @@ interface ProductDetails {
 	products: {};
 }
 
-const ProductDetails: NextPageWithLayout<ProductDetails> = ({
-	product,
-	products,
-}) => {
+const ProductDetails: NextPageWithLayout<ProductDetails> = (
+	{ product, products }: any //Change
+) => {
 	if (!products) {
 		return <div>Loading...</div>; // or handle the loading state in another way
 	}
