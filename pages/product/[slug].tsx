@@ -86,15 +86,13 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 					<p className="price">${price}</p>
 					<h3>Quantity: </h3>
 					<p className="quantity-desc">
-						<div className="quantity">
-							<span className="minus" onClick={decQty}>
-								<AiOutlineMinus />
-							</span>
-							<span className="num">{qty}</span>
-							<span className="plus" onClick={incQty}>
-								<AiOutlinePlus />
-							</span>
-						</div>
+						<span className="minus" onClick={decQty}>
+							<AiOutlineMinus />
+						</span>
+						<span className="num">{qty}</span>
+						<span className="plus" onClick={incQty}>
+							<AiOutlinePlus />
+						</span>
 					</p>
 					<div className="buttons">
 						<button
