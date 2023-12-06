@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
+import Footer from './Footer';
 
 import { urlFor } from '@/lib/client';
 
@@ -51,7 +52,7 @@ const FooterBanner: FC<FooterInterface> = ({
 				</div>
 				<img src={urlFor(image).url()} className="footer-banner-image" alt="" />
 			</div>
-			Footer
+			<Footer />
 		</div>
 	);
 };
