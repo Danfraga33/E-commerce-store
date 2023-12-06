@@ -10,6 +10,8 @@ import {
 	AiOutlineStar,
 } from 'react-icons/ai';
 
+import { useStateContext } from '@/context/StateContext';
+
 interface ProductDetails {
 	product: {
 		image: any; // change
@@ -41,6 +43,7 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 	}
 	const [index, setIndex] = useState(0);
 	const { image, name, details, price } = product;
+	const { decQty, incQty, qty, onAdd }: any = useStateContext(); // Change
 	return (
 		<div>
 			<div className="product-detail-container">
@@ -84,17 +87,21 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 					<h3>Quantity: </h3>
 					<p className="quantity-desc">
 						<div className="quantity">
-							<span className="minus">
+							<span className="minus" onClick={decQty}>
 								<AiOutlineMinus />
 							</span>
-							<span className="num">0</span>
-							<span className="plus">
+							<span className="num">{qty}</span>
+							<span className="plus" onClick={incQty}>
 								<AiOutlinePlus />
 							</span>
 						</div>
 					</p>
 					<div className="buttons">
-						<button type="button" className="add-to-cart">
+						<button
+							type="button"
+							className="add-to-cart"
+							onClick={() => onAdd(product, qty)}
+						>
 							Add to Cart
 						</button>
 						<button type="button" className="buy-now">
@@ -107,7 +114,7 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 					<h2>You may also like:</h2>
 					<div className="marquee">
 						<div className="maylike-products-container track">
-							{products.map((item) => (
+							{products.map((item: any) => (
 								<Product key={item.id} product={item} />
 							))}
 						</div>
@@ -149,7 +156,7 @@ export const getStaticProps: GetStaticProps = async ({
 	const productsQuery = '*[_type == "product"]';
 	const product = await client.fetch(query);
 	const products = await client.fetch(productsQuery);
-	console.log(products);
+
 	return {
 		props: {
 			product,
