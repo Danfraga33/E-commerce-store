@@ -16,7 +16,7 @@ const Cart = () => {
 	const { totalPrice, totalQuantities, cartItems, setShowCart } =
 		useStateContext();
 	return (
-		<div className="c	art-wrapper" ref={cartRef}>
+		<div className="cart-wrapper" ref={cartRef}>
 			<div className="cart-container">
 				<button
 					className="cart-heading"

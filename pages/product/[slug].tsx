@@ -9,6 +9,7 @@ import {
 	AiFillStar,
 	AiOutlineStar,
 } from 'react-icons/ai';
+import { LayoutProps } from '@/components/LayoutProps/LayoutProps';
 
 import { useStateContext } from '@/context/StateContext';
 
@@ -36,7 +37,7 @@ interface ProductDetails {
 }
 
 const ProductDetails: NextPageWithLayout<ProductDetails> = (
-	{ product, products }: any //Change
+	{ product, products }: LayoutProps | any //Change
 ) => {
 	if (!products) {
 		return <div>Loading...</div>; // or handle the loading state in another way
@@ -124,7 +125,11 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 };
 
 ProductDetails.getLayout = function getLayout(page: ReactElement) {
-	return <Layout>{page}</Layout>;
+	return (
+		<div>
+			<Layout>{page}</Layout>
+		</div>
+	);
 };
 
 export const getStaticPaths = async () => {

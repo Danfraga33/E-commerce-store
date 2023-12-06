@@ -1,10 +1,11 @@
 import React, { FC, ReactElement } from 'react';
+import { LayoutProps } from './LayoutProps/LayoutProps';
 
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const Layout: FC = ({ children }: any) => {
+const Layout = ({ children }: LayoutProps) => {
 	return (
 		<div className="layout">
 			<Head>
