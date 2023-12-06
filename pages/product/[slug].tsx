@@ -1,6 +1,6 @@
 import React, { ReactElement, FC, useState } from 'react';
 import { client, urlFor } from '@/lib/client';
-import { Layout, Product } from '@/components';
+import { Layout, Navbar, Product } from '@/components';
 import type { InferGetStaticPropsType, GetStaticProps } from 'next';
 import type { NextPageWithLayout } from '../_app';
 import {
@@ -47,6 +47,7 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 	const { decQty, incQty, qty, onAdd }: any = useStateContext(); // Change
 	return (
 		<div>
+			<Navbar />
 			<div className="product-detail-container">
 				<div className="image-container">
 					<img
