@@ -52,7 +52,6 @@ const FooterBanner: FC<FooterInterface> = ({
 				</div>
 				<img src={urlFor(image).url()} className="footer-banner-image" alt="" />
 			</div>
-			<Footer />
 		</div>
 	);
 };
