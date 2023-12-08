@@ -13,7 +13,7 @@ const Home: NextPageWithLayout = ({
 		<>
 			<HeroBanner HeroBanner={bannerData.length && bannerData[0]} />
 
-			<div className="product-heading">
+			<div className="products-heading">
 				<h2>Best Selling Produts</h2>
 				<p>Speakers of many variants</p>
 			</div>

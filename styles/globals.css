@@ -489,7 +489,6 @@ span.text-red {
 	text-decoration: line-through;
 }
 .product-detail-desc .quantity {
-	display: flex;
 	gap: 20px;
 	margin-top: 10px;
 	align-items: center;
@@ -532,6 +531,10 @@ span.text-red {
 	transform: scale(1.1, 1.1);
 }
 .quantity-desc {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+
 	border: 1px solid gray;
 	padding: 6px;
 }
