@@ -15,7 +15,7 @@ interface HeroBannerProps {
 	};
 }
 const HeroBanner: FC<HeroBannerProps> = ({ HeroBanner }) => {
-	console.log(HeroBanner);
+	// console.log(HeroBanner);
 	return (
 		<div className="hero-banner-container">
 			<div>
