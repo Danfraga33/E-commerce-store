@@ -13,8 +13,15 @@ import { urlFor } from '@/lib/client';
 
 const Cart = () => {
 	const cartRef = useRef();
-	const { totalPrice, totalQuantities, cartItems, setShowCart } =
-		useStateContext();
+	const {
+		toggleCartItemQuantity,
+		totalPrice,
+		totalQuantities,
+		cartItems,
+		setShowCart,
+		onRemove,
+	} = useStateContext();
+	console.log(cartItems);
 	return (
 		<div className="cart-wrapper" ref={cartRef}>
 			<div className="cart-container">
@@ -23,15 +30,15 @@ const Cart = () => {
 					type="button"
 					onClick={() => setShowCart(false)}
 				>
-					{AiOutlineLeft}
+					<AiOutlineLeft />
 					<span className="heading">Your Cart</span>
 					<span className="cart-num-items">({totalQuantities} items)</span>
 				</button>
 
-				{cartItems > 1 && (
+				{cartItems.length > 1 && (
 					<div className="empty-cart">
 						<AiOutlineShopping size={150} />
-						<h3>Your Shopping bad is empty</h3>
+						<h3>Your Shopping bag is empty</h3>
 						<Link href="/">
 							<button
 								type="button"
@@ -51,36 +58,47 @@ const Cart = () => {
 								item: any, //Change
 								index: any //Change
 							) => (
-								<div className="product" key={item._id}>
+								<div className="product" key={index}>
 									<img
-										src={urlFor(item?.image[0].url())}
+										src={urlFor(item?.image[0]).url()}
 										className="cart-product-image"
-									>
-										<div className="item-desc">
-											<div className="flex top">
-												<h5>{item.name}</h5>
-												<h4>${item.price}</h4>
-											</div>
-											<div className="flex bottom">
-												<div>
-													<p className="quantity-desc">
-														<div className="quantity">
-															<span className="minus">
-																<AiOutlineMinus />
-															</span>
-															<span className="num">0</span>
-															<span className="plus">
-																<AiOutlinePlus />
-															</span>
-														</div>
-													</p>
-												</div>
-												<button type="button" className="remove-item">
-													<TiDeleteOutline />
-												</button>
-											</div>
+									/>
+									<div className="item-desc">
+										<div className="flex top">
+											<h5>{item.name}</h5>
+											<h4>${item.price}</h4>
 										</div>
-									</img>
+										<div className="flex bottom">
+											<div>
+												<p className="quantity-desc">
+													<span
+														className="minus"
+														onClick={() =>
+															toggleCartItemQuantity(item._id, 'dec')
+														}
+													>
+														<AiOutlineMinus />
+													</span>
+													<span className="num">{item.quantity}</span>
+													<span
+														className="plus"
+														onClick={() =>
+															toggleCartItemQuantity(item._id, 'inc')
+														}
+													>
+														<AiOutlinePlus />
+													</span>
+												</p>
+											</div>
+											<button
+												type="button"
+												className="remove-item"
+												onClick={() => onRemove(item)}
+											>
+												<TiDeleteOutline />
+											</button>
+										</div>
+									</div>
 								</div>
 							)
 						)}
