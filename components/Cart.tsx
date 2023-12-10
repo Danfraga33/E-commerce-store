@@ -26,8 +26,8 @@ const Cart = () => {
 		<div className="cart-wrapper" ref={cartRef}>
 			<div className="cart-container">
 				<button
-					className="cart-heading"
 					type="button"
+					className="cart-heading"
 					onClick={() => setShowCart(false)}
 				>
 					<AiOutlineLeft />
@@ -35,7 +35,7 @@ const Cart = () => {
 					<span className="cart-num-items">({totalQuantities} items)</span>
 				</button>
 
-				{cartItems.length > 1 && (
+				{cartItems.length < 1 && (
 					<div className="empty-cart">
 						<AiOutlineShopping size={150} />
 						<h3>Your Shopping bag is empty</h3>
