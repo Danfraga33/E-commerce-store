@@ -28,7 +28,7 @@ const FooterBanner: FC<FooterInterface> = ({
 		midText,
 		smallText,
 		image,
-		button,
+		buttonText,
 		product,
 		desc,
 	},
@@ -47,7 +47,7 @@ const FooterBanner: FC<FooterInterface> = ({
 					<h3>{midText}</h3>
 					<p>{desc}</p>
 					<Link href={`/product/${product}`}>
-						<button type="button">{button}</button>
+						<button type="button">{buttonText}</button>
 					</Link>
 				</div>
 				<img src={urlFor(image).url()} className="footer-banner-image" alt="" />
