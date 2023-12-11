@@ -15,7 +15,7 @@ interface HeroBannerProps {
 	};
 }
 const HeroBanner: FC<HeroBannerProps> = ({ HeroBanner }) => {
-	// console.log(HeroBanner);
+	console.log(HeroBanner);
 	return (
 		<div className="hero-banner-container">
 			<div>
@@ -30,7 +30,7 @@ const HeroBanner: FC<HeroBannerProps> = ({ HeroBanner }) => {
 			/>
 
 			<div>
-				<Link href={`/product/${HeroBanner.product}`}>
+				<Link href={`/product/headphones`}>
 					<button type="button"> {HeroBanner?.buttonText}</button>
 				</Link>
 				<div className="desc">
