@@ -1,7 +1,7 @@
-import React, { ReactElement, FC, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { client, urlFor } from '@/lib/client';
-import { Layout, Navbar, Product } from '@/components';
-import type { InferGetStaticPropsType, GetStaticProps } from 'next';
+import { Layout, Product } from '@/components';
+import type { GetStaticProps } from 'next';
 import type { NextPageWithLayout } from '../_app';
 import {
 	AiOutlineMinus,
@@ -35,16 +35,20 @@ interface ProductDetails {
 	};
 	products: {};
 }
-
 const ProductDetails: NextPageWithLayout<ProductDetails> = (
 	{ product, products }: LayoutProps | any //Change
 ) => {
+	const { decQty, incQty, qty, onAdd, setShowCart }: any = useStateContext(); // Change
 	if (!products) {
 		return <div>Loading...</div>; // or handle the loading state in another way
 	}
+	const handleBuyNow = () => {
+		onAdd(product, qty);
+
+		setShowCart(true);
+	};
 	const { image, name, details, price } = product;
 	const [index, setIndex] = useState(0);
-	const { decQty, incQty, qty, onAdd }: any = useStateContext(); // Change
 	return (
 		<div>
 			<div className="product-detail-container">
@@ -73,7 +77,7 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 				<div className="product-detail-desc">
 					<h1>{name}</h1>
 					<div className="reviews">
-						<div>
+						<div className="flex">
 							<AiFillStar />
 							<AiFillStar />
 							<AiFillStar />
@@ -105,7 +109,7 @@ const ProductDetails: NextPageWithLayout<ProductDetails> = (
 						>
 							Add to Cart
 						</button>
-						<button type="button" className="buy-now">
+						<button type="button" className="buy-now" onClick={handleBuyNow}>
 							Buy Now
 						</button>
 					</div>
