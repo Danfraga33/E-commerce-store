@@ -9,6 +9,7 @@ const Home: NextPageWithLayout = ({
 	products,
 	bannerData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+	console.log(products);
 	return (
 		<>
 			<HeroBanner HeroBanner={bannerData.length && bannerData[0]} />
