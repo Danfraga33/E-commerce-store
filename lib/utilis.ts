@@ -3,7 +3,12 @@ import confetti from 'canvas-confetti';
 export const runFireWorks = () => {
 	var duration = 5 * 1000;
 	var animationEnd = Date.now() + duration;
-	var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+	var defaults: any = {
+		startVelocity: 30,
+		spread: 360,
+		ticks: 60,
+		zIndex: 0,
+	};
 
 	function randomInRange(min: any, max: any) {
 		return Math.random() * (max - min) + min;
