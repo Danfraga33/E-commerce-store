@@ -15,7 +15,6 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	if (req.method === 'POST') {
-		console.log(req.body);
 		try {
 			const params = {
 				submit_type: 'pay',
@@ -30,7 +29,7 @@ export default async function handler(
 						shipping_rate: 'shr_1OLo7pJF4okf9JwFWaQVz2Cn',
 					},
 				],
-				line_items: req.body.map((item) => {
+				line_items: req.body.map((item: any) => {
 					const img = item.image[0].asset._ref;
 					const newImage = img
 						.replace(
@@ -38,10 +37,10 @@ export default async function handler(
 							'https://cdn.sanity.io/images/09dg4a19/production/'
 						)
 						.replace('-webp', 'webp');
-					console.log('IMAGE', newImage);
+
 					return {
 						price_data: {
-							currency: 'usd',
+							currency: 'eur',
 							product_data: {
 								name: 'item.name',
 								images: [newImage],
@@ -63,7 +62,7 @@ export default async function handler(
 			const session = await stripe.checkout.sessions.create(params);
 			res.status(200).json(session);
 			// Create Checkout Sessions from body params.
-		} catch (err) {
+		} catch (err: any) {
 			res.status(err.statusCode || 500).json(err.message);
 		}
 	} else {
