@@ -13,7 +13,7 @@ import { urlFor } from '@/lib/client';
 import getStripe from '@/lib/getStripe';
 
 const Cart = () => {
-	const cartRef = useRef();
+	const cartRef = useRef<HTMLInputElement>(null);
 	const {
 		toggleCartItemQuantity,
 		totalPrice,
@@ -33,7 +33,8 @@ const Cart = () => {
 			},
 			body: JSON.stringify(cartItems),
 		});
-		if (response.statusCode === 500) return;
+
+		if (response.status === 500) return;
 
 		const data = await response.json();
 
